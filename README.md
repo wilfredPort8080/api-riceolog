@@ -1,0 +1,3 @@
+#RICEOFFICE LOG MONITORING
+
+version 1.0v
