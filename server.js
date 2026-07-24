@@ -1,6 +1,7 @@
 import express from "express";
 import mongoose from "mongoose";
 import cors from "cors";
+
 import dotenv from "dotenv";
 import nodemailer from "nodemailer";
 import path from "path";
@@ -26,6 +27,15 @@ mongoose
   .connect(process.env.MONGO_URI)
   .then(() => console.log("MongoDB connected"))
   .catch((err) => console.error(err));
+
+app.get("/", async (req, res) => {
+  try {
+    res.json({ message: "Hello, this is my REST API for monitoring log" });
+  } catch (err) {
+    console.error(err);
+    res.status(500).json({ error: "Something went wrong" });
+  }
+});
 
 // Save a transfer request
 app.post("/api/transfers", async (req, res) => {
